@@ -1,0 +1,2 @@
+entrypoint = "src/app.ts"
+hot = true

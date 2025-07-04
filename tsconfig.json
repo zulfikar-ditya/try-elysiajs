@@ -1,0 +1,51 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"baseUrl": ".",
+		"declaration": true,
+		"removeComments": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"sourceMap": true,
+		"outDir": "./dist",
+		"incremental": true,
+		"skipLibCheck": true,
+		"strictNullChecks": true,
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"strictBindCallApply": false,
+		"noFallthroughCasesInSwitch": false,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"types": ["bun-types"],
+
+		"paths": {
+			"@/*": ["src/*"],
+			"@config/*": ["src/config/*"],
+			"@utils/*": ["src/utils/*"],
+			"@controllers/*": ["src/app/controllers/*"],
+			"@routes/*": ["src/routes/*"]
+
+			// "@configs/*": ["src/configs/*"],
+			// "@routes/*": ["src/routes/*"],
+			// "@utils/*": ["src/utils/*"],
+			// "@repositories/*": ["src/app/repositories/*"],
+			// "@services/*": ["src/app/services/*"],
+			// "@appTypes/*": ["src/types/*"],
+			// "@logger/*": ["src/utils/logger/*"],
+			// "@middlewares/*": ["src/app/middlewares/*"],
+			// "@errors/*": ["src/app/errors/*"]
+		}
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist"]
+}
