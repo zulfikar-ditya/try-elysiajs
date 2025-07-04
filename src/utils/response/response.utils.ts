@@ -33,4 +33,21 @@ export class ResponseUtils {
 	static unauthorized(message: string = "Unauthorized") {
 		return this.error(message, 401);
 	}
+
+	static response<T>(
+		ctx: Context,
+		success: boolean,
+		data: T | null,
+		message: string = "Success",
+		statusCode: number = 200,
+	) {
+		ctx.status(statusCode);
+
+		return {
+			status: statusCode,
+			success,
+			message,
+			data,
+		};
+	}
 }

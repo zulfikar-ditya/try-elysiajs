@@ -1,3 +1,4 @@
+import { AuthController } from "@/app/controllers/auth.controller";
 import { DateUtils, ResponseUtils } from "@/utils";
 import Elysia, { Context } from "elysia";
 
@@ -19,5 +20,7 @@ routes.get("/health", (ctx: Context) => {
 		200,
 	);
 });
+
+routes.post("/auth/login", AuthController.login);
 
 export default routes;
