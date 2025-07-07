@@ -3,9 +3,12 @@ import { Elysia } from "elysia";
 import { appConfig, CORSConfig } from "./config";
 import routes from "./routes";
 import { LoggerUtils } from "./utils";
+import jwt from "@elysiajs/jwt";
+import { UnprocessableEntityError } from "./app/errors/UnprocessableEntityError";
+import { UnauthorizedError } from "./app/errors/UnauthorizedError";
 
 const app = new Elysia()
-	.onError(({ code, error }) => {
+	.onError(({ code, error, set }) => {
 		switch (code) {
 			case "NOT_FOUND":
 				return {
@@ -23,6 +26,15 @@ const app = new Elysia()
 					data: null,
 				};
 			case "UNKNOWN":
+				if (error instanceof UnprocessableEntityError) {
+					return {
+						status: 422,
+						success: false,
+						message: error.message,
+						errors: error.errors,
+					};
+				}
+
 				LoggerUtils.error("Unknown Error", error);
 				return {
 					status: 500,
@@ -31,16 +43,29 @@ const app = new Elysia()
 					data: null,
 				};
 			default:
+				if (error instanceof UnauthorizedError) {
+					set.status = 401;
+					return {
+						status: 401,
+						success: false,
+						message: error.message,
+						data: null,
+					};
+				}
+
 				LoggerUtils.error(`Unhandled error code: ${code}`, error);
 				return error;
 		}
 	})
-	.onAfterResponse(({ set, path }) => {
-		LoggerUtils.info(`Response sent successfully ${performance.now()}`, {
-			status: set.status,
-			path,
-		});
+	.onAfterResponse(({ set, path, request }) => {
+		LoggerUtils.info(`${request.method}: ${path} - ${set.status}`);
 	})
+	.use(
+		jwt({
+			algorithm: "HS256",
+			secret: appConfig.app_jwt_secret,
+		}),
+	)
 	.use(cors(CORSConfig))
 	.listen(appConfig.app_port);
 

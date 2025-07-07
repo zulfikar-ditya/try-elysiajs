@@ -1,4 +1,5 @@
 import { AuthController } from "@/app/controllers/auth.controller";
+import { authMiddleware } from "@/app/middlewares/auth.middleware";
 import { DateUtils, ResponseUtils } from "@/utils";
 import Elysia, { Context } from "elysia";
 
@@ -22,5 +23,16 @@ routes.get("/health", (ctx: Context) => {
 });
 
 routes.post("/auth/login", AuthController.login);
+
+// AUTH MIDDLEWARE GROUP
+routes.group("", (app) => {
+	app.derive(async (ctx) => {
+		await authMiddleware(ctx);
+		return ctx;
+	});
+
+	app.get("/profile", AuthController.profile);
+	return app;
+});
 
 export default routes;

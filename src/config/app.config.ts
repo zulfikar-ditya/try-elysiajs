@@ -5,6 +5,7 @@ interface AppConfig {
 	app_url: string;
 	app_timezone: string;
 	app_key: string;
+	app_jwt_secret: string;
 }
 
 export const appConfig: AppConfig = {
@@ -17,4 +18,5 @@ export const appConfig: AppConfig = {
 	app_url: process.env.APP_URL || "http://localhost:3000",
 	app_timezone: process.env.APP_TIMEZONE || "UTC",
 	app_key: process.env.APP_KEY || "default_key",
+	app_jwt_secret: process.env.APP_JWT_SECRET || "default_jwt_secret",
 };

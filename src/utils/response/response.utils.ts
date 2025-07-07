@@ -50,4 +50,20 @@ export class ResponseUtils {
 			data,
 		};
 	}
+
+	static validationError(
+		ctx: Context,
+		errors: { [key: string]: string[] },
+		message: string = "Validation failed",
+		statusCode: number = 422,
+	) {
+		ctx.set.status = statusCode;
+
+		return {
+			status: statusCode,
+			success: false,
+			message,
+			errors,
+		};
+	}
 }
