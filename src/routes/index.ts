@@ -1,26 +1,12 @@
+import { AppController } from "@/app/controllers/app.controller";
 import { AuthController } from "@/app/controllers/auth.controller";
 import { authMiddleware } from "@/app/middlewares/auth.middleware";
-import { DateUtils, ResponseUtils } from "@/utils";
-import Elysia, { Context } from "elysia";
+import Elysia from "elysia";
 
 const routes = new Elysia();
 
-routes.get("/", (ctx: Context) => {
-	return ResponseUtils.success(ctx, null, "Welcome to ElysiaJS!", 200);
-});
-
-routes.get("/health", (ctx: Context) => {
-	return ResponseUtils.success(
-		ctx,
-		{
-			app_name: process.env.APP_NAME || "Elysia App",
-			date: DateUtils.now().format("YYYY-MM-DD HH:mm:ss"),
-			app_env: process.env.APP_ENV || "development",
-		},
-		"Ok",
-		200,
-	);
-});
+routes.get("/", AppController.home);
+routes.get("/health", AppController.health);
 
 routes.post("/auth/login", AuthController.login);
 

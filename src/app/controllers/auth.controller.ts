@@ -1,5 +1,5 @@
 import { ResponseUtils, ValidationUtils } from "@/utils";
-import { Context, t } from "elysia";
+import { Context } from "elysia";
 import z from "zod";
 import { UserRepository } from "../repositories";
 

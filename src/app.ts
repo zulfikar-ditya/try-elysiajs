@@ -6,6 +6,7 @@ import { LoggerUtils } from "./utils";
 import jwt from "@elysiajs/jwt";
 import { UnprocessableEntityError } from "./app/errors/UnprocessableEntityError";
 import { UnauthorizedError } from "./app/errors/UnauthorizedError";
+import "./types/context";
 
 const app = new Elysia()
 	.onError(({ code, error, set }) => {
