@@ -26,25 +26,15 @@
 		"noFallthroughCasesInSwitch": false,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"types": ["bun-types"],
+		"types": [],
 		"typeRoots": ["./node_modules/@types", "./src/types"],
 
 		"paths": {
-			"@/*": ["src/*"],
+			"@app/*": ["src/app/*"],
 			"@config/*": ["src/config/*"],
+			"@errors/*": ["src/app/errors/*"],
 			"@utils/*": ["src/utils/*"],
-			"@controllers/*": ["src/app/controllers/*"],
-			"@routes/*": ["src/routes/*"]
-
-			// "@configs/*": ["src/configs/*"],
-			// "@routes/*": ["src/routes/*"],
-			// "@utils/*": ["src/utils/*"],
-			// "@repositories/*": ["src/app/repositories/*"],
-			// "@services/*": ["src/app/services/*"],
-			// "@appTypes/*": ["src/types/*"],
-			// "@logger/*": ["src/utils/logger/*"],
-			// "@middlewares/*": ["src/app/middlewares/*"],
-			// "@errors/*": ["src/app/errors/*"]
+			"@appTypes/*": ["src/types/*"]
 		}
 	},
 	"include": ["src/**/*"],
