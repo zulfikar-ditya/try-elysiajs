@@ -31,12 +31,31 @@
 
 		"paths": {
 			"@app/*": ["src/app/*"],
+
 			"@config/*": ["src/config/*"],
+			"@config": ["src/config/index.ts"],
+
 			"@errors/*": ["src/app/errors/*"],
+			"@errors": ["src/app/errors/index.ts"],
+
 			"@utils/*": ["src/utils/*"],
-			"@appTypes/*": ["src/types/*"]
+			"@utils": ["src/utils/index.ts"],
+
+			"@appTypes/*": ["src/types/*"],
+
+			"@controllers/*": ["src/app/controllers/*"],
+			"@controllers": ["src/app/controllers/index.ts"],
+
+			"@repositories/*": ["src/app/repositories/*"],
+			"@repositories": ["src/app/repositories/index.ts"],
+
+			"@routes/*": ["src/routes/*"],
+			"@routes": ["src/routes/index.ts"],
+
+			"@seeders/*": ["prisma/seeders/*"],
+			"@seeders": ["prisma/seeders/index.ts"]
 		}
 	},
-	"include": ["src/**/*"],
+	"include": ["src/**/*", "prisma/**/*"],
 	"exclude": ["node_modules", "dist"]
 }

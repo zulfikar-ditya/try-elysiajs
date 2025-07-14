@@ -1,5 +1,5 @@
-import { appConfig } from "@/config";
-import { DateUtils } from "../date/date.utils";
+import { appConfig } from "@config";
+import { DateUtils } from "@utils";
 
 export class LoggerUtils {
 	private static isDevelopment = appConfig.app_env === "development";

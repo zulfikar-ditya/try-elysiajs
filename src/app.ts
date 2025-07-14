@@ -1,9 +1,10 @@
 import cors from "@elysiajs/cors";
 import { Elysia } from "elysia";
-import { appConfig, CORSConfig } from "@config/index";
+import { appConfig, CORSConfig } from "@config";
 import jwt from "@elysiajs/jwt";
-import { UnauthorizedError, UnprocessableEntityError } from "@app/errors";
-import { LoggerUtils } from "@utils/index";
+import { UnauthorizedError, UnprocessableEntityError } from "@errors";
+import { LoggerUtils } from "@utils";
+import routes from "@routes";
 
 const app = new Elysia()
 	.onError(({ code, error, set }) => {

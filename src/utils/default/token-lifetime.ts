@@ -1,4 +1,4 @@
-import { DateUtils } from "../date/date.utils";
+import { DateUtils } from "@utils";
 
 export const accessTokenLifetime = DateUtils.addHours(
 	DateUtils.now(),

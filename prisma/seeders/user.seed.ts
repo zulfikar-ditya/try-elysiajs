@@ -1,5 +1,5 @@
 import { Prisma } from "@prisma/client";
-import { HashUtils } from "../../src/utils/hash/hash.utils";
+import { HashUtils } from "@utils";
 
 export const userSeeder = async (prisma: Prisma.TransactionClient) => {
 	const users = ["admin", "user1", "user2"];

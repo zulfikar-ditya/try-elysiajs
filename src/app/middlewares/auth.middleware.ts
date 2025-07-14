@@ -1,6 +1,6 @@
 import { Context } from "elysia";
-import { UnauthorizedError } from "../errors/UnauthorizedError";
-import { UserRepository } from "../repositories";
+import { UnauthorizedError } from "@errors";
+import { UserRepository } from "@repositories";
 
 export const authMiddleware = async (ctx: Context) => {
 	try {
@@ -20,7 +20,9 @@ export const authMiddleware = async (ctx: Context) => {
 		}
 
 		ctx.user = userInformation;
-	} catch (error) {
+
+		// eslint-disable-next-line
+	} catch {
 		throw new UnauthorizedError();
 	}
 };

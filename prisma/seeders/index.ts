@@ -1,17 +1,19 @@
 import { userSeeder } from "./user.seed";
-import { prisma } from "../../src/app/repositories/index";
+import { prisma } from "../../src/app/repositories";
+import { LoggerUtils } from "@utils";
 
 async function seed() {
 	try {
-		userSeeder(prisma);
-		console.log("Seeding completed successfully.");
+		await userSeeder(prisma);
+		LoggerUtils.info("User seeding completed successfully.");
 	} catch (error) {
-		console.error("Error during seeding:", error);
+		LoggerUtils.error("Error during user seeding:", error);
+		throw error;
 	} finally {
 		await prisma.$disconnect();
 	}
 }
 
 seed()
-	.then(() => console.log("Seeding finished."))
-	.catch((error) => console.error("Seeding failed:", error));
+	.then(() => LoggerUtils.info("Seeding finished."))
+	.catch((error) => LoggerUtils.error("Seeding failed:", error));

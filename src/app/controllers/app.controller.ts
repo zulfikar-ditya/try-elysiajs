@@ -1,5 +1,5 @@
-import { appConfig } from "@/config";
-import { DateUtils, ResponseUtils } from "@/utils";
+import { appConfig } from "@config";
+import { DateUtils, ResponseUtils } from "@utils";
 import { Context } from "elysia";
 
 export const AppController = {

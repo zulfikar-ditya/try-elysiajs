@@ -1,8 +1,8 @@
 import { Prisma } from "@prisma/client";
-import { prisma } from ".";
-import { HashUtils } from "@/utils";
-import { UnprocessableEntityError } from "../errors/UnprocessableEntityError";
-import { UnauthorizedError } from "../errors/UnauthorizedError";
+import { prisma } from "@repositories";
+import { HashUtils } from "@utils";
+import { UnprocessableEntityError } from "@errors";
+import { UnauthorizedError } from "@errors";
 
 export const UserRepository = (tx: Prisma.TransactionClient | null = null) => {
 	const db = tx || prisma;

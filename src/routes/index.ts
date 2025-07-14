@@ -1,6 +1,5 @@
-import { AppController } from "@/app/controllers/app.controller";
-import { AuthController } from "@/app/controllers/auth.controller";
-import { authMiddleware } from "@/app/middlewares/auth.middleware";
+import { AppController, AuthController } from "@app/controllers";
+import { authMiddleware } from "@app/middlewares";
 import Elysia from "elysia";
 
 const routes = new Elysia();
