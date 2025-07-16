@@ -35,6 +35,9 @@
 			"@config/*": ["src/config/*"],
 			"@config": ["src/config/index.ts"],
 
+			"@mails/*": ["src/app/mails/*"],
+			"@mails": ["src/app/mails/index.ts"],
+
 			"@errors/*": ["src/app/errors/*"],
 			"@errors": ["src/app/errors/index.ts"],
 

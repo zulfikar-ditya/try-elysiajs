@@ -8,6 +8,8 @@ routes.get("/", AppController.home);
 routes.get("/health", AppController.health);
 
 routes.post("/auth/login", AuthController.login);
+routes.post("/auth/forgot-password", AuthController.forgotPassword);
+routes.post("/auth/reset-password", AuthController.resetPassword);
 
 // AUTH MIDDLEWARE GROUP
 routes.group("", (app) => {

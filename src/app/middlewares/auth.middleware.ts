@@ -20,8 +20,6 @@ export const authMiddleware = async (ctx: Context) => {
 		}
 
 		ctx.user = userInformation;
-
-		// eslint-disable-next-line
 	} catch {
 		throw new UnauthorizedError();
 	}

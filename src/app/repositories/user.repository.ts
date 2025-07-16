@@ -76,5 +76,16 @@ export const UserRepository = (tx: Prisma.TransactionClient | null = null) => {
 
 			return user;
 		},
+
+		updatePassword: async (
+			userId: string,
+			newPassword: string,
+		): Promise<void> => {
+			const hashedPassword = await HashUtils.generateHash(newPassword);
+			await db.user.update({
+				where: { id: userId },
+				data: { password: hashedPassword },
+			});
+		},
 	};
 };
