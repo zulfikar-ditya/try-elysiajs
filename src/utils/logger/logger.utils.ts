@@ -63,11 +63,11 @@ export class LoggerUtils {
 	static info(message: string, context?: object): void {
 		const timestamp = DateUtils.now().format("YYYY-MM-DD HH:mm:ss");
 		// eslint-disable-next-line
-		console.log(`[INFO] ${timestamp} - ${message}`);
+		console.info(`[INFO] ${timestamp} - ${message}`);
 
 		if (context) {
 			// eslint-disable-next-line
-			console.log(`Context:`, JSON.stringify(context, null, 2));
+			console.info(`Context:`, JSON.stringify(context, null, 2));
 		}
 	}
 

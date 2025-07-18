@@ -1,5 +1,6 @@
 export * from "./date/date.utils";
 export * from "./default/allowed-file-uploads";
+export * from "./cache/cache.utils";
 export * from "./default/max-upload-file";
 export * from "./default/pagination-length";
 export * from "./default/sort";
