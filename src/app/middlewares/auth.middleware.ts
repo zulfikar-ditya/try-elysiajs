@@ -1,8 +1,9 @@
 import { Context } from "elysia";
 import { UnauthorizedError } from "@errors";
 import { UserRepository } from "@repositories";
+import { AppContext } from "@appTypes/elysia";
 
-export const authMiddleware = async (ctx: Context) => {
+export const authMiddleware = async (ctx: AppContext) => {
 	try {
 		const token = getTokenFromHeader(ctx);
 		const payload: {

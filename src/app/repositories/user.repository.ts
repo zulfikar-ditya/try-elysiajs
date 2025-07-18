@@ -3,6 +3,7 @@ import { prisma } from "@repositories";
 import { CacheUtils, HashUtils } from "@utils";
 import { UnprocessableEntityError } from "@errors";
 import { UnauthorizedError } from "@errors";
+import { UserInformation } from "@appTypes/user";
 
 export const UserRepository = (tx: Prisma.TransactionClient | null = null) => {
 	const db = tx || prisma;
@@ -50,15 +51,7 @@ export const UserRepository = (tx: Prisma.TransactionClient | null = null) => {
 			return user;
 		},
 
-		userInformation: async (
-			id: string,
-		): Promise<{
-			id: string;
-			email: string;
-			name: string;
-			createdAt: Date;
-			updatedAt: Date;
-		}> => {
+		userInformation: async (id: string): Promise<UserInformation> => {
 			const user = await CacheUtils.remember(
 				`user:${id}`,
 				async () => {
@@ -75,17 +68,6 @@ export const UserRepository = (tx: Prisma.TransactionClient | null = null) => {
 				},
 				3600,
 			);
-
-			// const user = await db.user.findUnique({
-			// 	where: { id, deletedAt: null },
-			// 	select: {
-			// 		id: true,
-			// 		email: true,
-			// 		name: true,
-			// 		createdAt: true,
-			// 		updatedAt: true,
-			// 	},
-			// });
 
 			if (!user) {
 				throw new UnauthorizedError("User not found");

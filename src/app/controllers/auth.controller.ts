@@ -4,6 +4,7 @@ import z from "zod";
 import { UserRepository } from "@repositories";
 import { PasswordResetTokenRepository } from "@app/repositories/password-reset-token.repository";
 import { ForgotPasswordMail } from "@app/mails/forgot-password.mail";
+import { AppContext } from "@appTypes/elysia";
 
 const loginSchema = z.object({
 	email: z.string().min(1, "Username is required"),
@@ -21,7 +22,7 @@ const resetPasswordSchema = z.object({
 });
 
 export const AuthController = {
-	login: async (ctx: Context) => {
+	login: async (ctx: AppContext) => {
 		// validation schema
 		const validation = loginSchema.safeParse(ctx.body);
 		if (!validation.success) {
@@ -63,7 +64,7 @@ export const AuthController = {
 		);
 	},
 
-	profile: async (ctx: Context) => {
+	profile: async (ctx: AppContext) => {
 		if (!ctx.user) {
 			return ResponseUtils.unauthorized();
 		}
@@ -79,7 +80,7 @@ export const AuthController = {
 		);
 	},
 
-	forgotPassword: async (ctx: Context) => {
+	forgotPassword: async (ctx: AppContext) => {
 		// validation schema
 		const validation = forgotPasswordSchema.safeParse(ctx.body);
 		if (!validation.success) {
@@ -128,7 +129,7 @@ export const AuthController = {
 		);
 	},
 
-	resetPassword: async (ctx: Context) => {
+	resetPassword: async (ctx: AppContext) => {
 		// validation schema
 		const validation = resetPasswordSchema.safeParse(ctx.body);
 		if (!validation.success) {
