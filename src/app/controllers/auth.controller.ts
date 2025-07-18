@@ -1,5 +1,4 @@
 import { ResponseUtils, ValidationUtils } from "@utils";
-import { Context } from "elysia";
 import z from "zod";
 import { UserRepository } from "@repositories";
 import { PasswordResetTokenRepository } from "@app/repositories/password-reset-token.repository";

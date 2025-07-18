@@ -1,4 +1,3 @@
-import { Context } from "elysia";
 import { UnauthorizedError } from "@errors";
 import { UserRepository } from "@repositories";
 import { AppContext } from "@appTypes/elysia";
@@ -26,7 +25,7 @@ export const authMiddleware = async (ctx: AppContext) => {
 	}
 };
 
-function getTokenFromHeader(ctx: Context): string | null {
+function getTokenFromHeader(ctx: AppContext): string | null {
 	const authHeader = ctx.request.headers.get("Authorization");
 	if (authHeader && authHeader.startsWith("Bearer ")) {
 		return authHeader.split(" ")[1];
